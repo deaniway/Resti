@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "resti"
+version = "0.1.0"
+description = "Simplified CRM on Django"
+authors = ["Denis <ad.way@mail.ru>"]
+readme = "README.md"
+packages = [{include = "resti_project"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^5.0.7"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
