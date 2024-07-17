@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ShiftsConfig(AppConfig):
+class WorkerConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apps.shifts'
+    name = 'worker'
