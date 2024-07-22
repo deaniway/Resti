@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load i18n %}
+
+<div class="formWrapper">
+    {% for message in messages %}
+
+        {{ message.type }}
+        <div>{{ message }}</div>
+
+    {% endfor %}
+
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="formFieldWrapper">
+                <label> {% translate field.label %} </label>
+                {{ field }}
+            </div>
+        {% endfor %}
+        <div class="formSubmitWrapper">
+            <input type="submit" value="{% block submit_label %}{% endblock %}">
+        </div>
+    </form>
+</div>
+
+{% endblock %}
