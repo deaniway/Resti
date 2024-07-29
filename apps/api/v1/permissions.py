@@ -1,6 +1,18 @@
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import BasePermission, IsAuthenticated
 
 
-class IsSuperuser(IsAuthenticated):
+class IsSuperuser(BasePermission):
+    @staticmethod
+    def is_superuser(user):
+        return bool( user and user.is_superuser )
+
     def has_permission(self, request, view):
-        return super(IsSuperuser, self).has_permission(request, view) & request.user.is_superuser
+        return self.is_superuser( request.user )
+
+    def has_object_permission(self, request, view, obj):
+        return self.is_superuser( request.user )
+
+
+class IsOwnUser(IsAuthenticated):
+    def has_object_permission(self, request, view, obj):
+        return bool(request.user.pk == obj.pk)
