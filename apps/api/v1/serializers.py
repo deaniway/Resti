@@ -9,10 +9,18 @@ class UserSerializer(serializers.ModelSerializer):
         extra_kwargs = { 'password': {'write_only': True} }
 
     def create(self, validated_data):
-        user = get_user_model()(
-            username=validated_data["username"],
-            email=validated_data["email"]
+
+        username = validated_data.get("username", None)
+        password = validated_data.get("password", None)
+        email = validated_data.get("email", None)
+
+        if username is None or password is None or email is None:
+            return None
+
+        user = self.Meta.model(
+            username=username,
+            email=email
         )
-        user.set_password( validated_data["password"] )
+        user.set_password( password )
         user.save()
         return user
