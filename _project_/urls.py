@@ -7,8 +7,10 @@ from rest_framework.authtoken.views import obtain_auth_token
 urlpatterns = [
     path('admin/',              admin.site.urls),
 
+    # api
     path('api/token/',          obtain_auth_token, name='token_obtain'),
     path('api/v1/',             include('apps.api.v1.urls')),
 
+    # apps
     path('users/',              include('apps.users.urls')),
 ]
