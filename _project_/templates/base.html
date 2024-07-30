@@ -1,18 +1,34 @@
+{% load django_bootstrap5 %}
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>
-            {% block title %}
-                RESTI CRM
-            {% endblock %}{% block bonus_title %}{% endblock %}
-        </title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Library{% endblock %}</title>
+    {% bootstrap_css %}
+</head>
+<body>
 
-    <body>
-        {% block content %}
-        {% endblock %}
-    </body>
+{% include '_includes/nav.html' %}
 
-    {% include '_includes/footer.html' %}
+<div class="container-fluid mt-4 pt-4">
+
+    {% if messages %}
+        <div>
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% block content %}
+    <!-- Default content  -->
+    {% endblock %}
+</div>
+
+{% bootstrap_javascript %}
+</body>
 </html>

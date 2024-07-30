@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_bootstrap5',
 
     # Third-Party Apps
     'rest_framework',
@@ -147,7 +148,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Auth settings
 
 AUTH_USER_MODEL = 'users.User'
-
+LOGIN_REDIRECT_URL = 'index'
 
 # DRF settings
 
