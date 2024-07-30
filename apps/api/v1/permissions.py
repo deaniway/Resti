@@ -9,10 +9,7 @@ class IsSuperuser(BasePermission):
     def has_permission(self, request, view):
         return self.is_superuser( request.user )
 
-    def has_object_permission(self, request, view, obj):
-        return self.is_superuser( request.user )
 
-
-class IsOwnUser(IsAuthenticated):
+class IsCorrectUser(IsAuthenticated):
     def has_object_permission(self, request, view, obj):
         return bool(request.user.pk == obj.pk)

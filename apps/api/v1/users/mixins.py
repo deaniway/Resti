@@ -1,4 +1,11 @@
 from rest_framework.generics import get_object_or_404
+from core.utils import get_queryset
+from . import serializers
+
+
+class UserAPIMixin:
+    serializer_class = serializers.UserSerializer
+    queryset = get_queryset('users', 'User')
 
 
 class GetRequestUserMixin:

@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.authtoken.views import obtain_auth_token
 from .views import IndexTemplateView, UserLoginView, UserLogoutView
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexTemplateView.as_view(), name='index'),
@@ -14,4 +16,5 @@ urlpatterns = [
     path('api/token/', obtain_auth_token, name='token_obtain'),
     path('api/v1/', include('apps.api.v1.urls')),
     path('users/', include('apps.users.urls')),
+
 ]
