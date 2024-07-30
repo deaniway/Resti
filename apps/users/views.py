@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 
 from .forms import UserRegisterForm
 
-from core.mixins import SaveValidFormMixin, RenderErrorsMixin
+from core.mixins.FormViews import SaveValidFormMixin, RenderErrorsMixin
 
 
 __all__ = (
