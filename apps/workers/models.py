@@ -6,7 +6,17 @@ from apps.professions.models import Profession
 class Worker(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
-    profession = models.ForeignKey(Profession, on_delete=models.SET_NULL, null=True, blank=True)
+    profession = models.ForeignKey(
+        Profession,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True
+    )
+    salary = models.CharField(
+        max_length=10,
+        blank=True,
+        help_text="Часовая ставка сотрудника"
+    )
     phone_number = models.CharField(
         max_length=20,
         blank=True,
@@ -21,7 +31,7 @@ class Worker(models.Model):
     telegram_link = models.URLField(
         blank=True,
         null=True,
-        help_text="Необязательная ссылка на ваш профиль в Telegram."
+        help_text="Введите телеграмм сотрудника для рассылки "
     )
 
     def __str__(self):
