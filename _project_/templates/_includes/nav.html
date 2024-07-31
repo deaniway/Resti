@@ -18,6 +18,32 @@
                 {% endif %}
 
                 {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Мое заведение</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Мой персонал</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">График смен</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Cтатистика</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Закрыть смену</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Расчет сотрудников</a>
+                </li>
+
+
+
                 <li class="nav-item ms-2">
                     <form method="post" action="{% url 'user_logout' %}">
                         {% csrf_token %}
