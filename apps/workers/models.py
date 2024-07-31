@@ -12,10 +12,12 @@ class Worker(models.Model):
         null=True,
         blank=True
     )
-    salary = models.CharField(
+    bonus_salary = models.CharField(
         max_length=10,
         blank=True,
-        help_text="Часовая ставка сотрудника"
+        null=True,
+        default=0,
+        help_text="Премиальные, надбавка"
     )
     phone_number = models.CharField(
         max_length=20,
@@ -31,7 +33,7 @@ class Worker(models.Model):
     telegram_link = models.URLField(
         blank=True,
         null=True,
-        help_text="Введите телеграмм сотрудника для рассылки "
+        help_text="Введите телеграмм сотрудника для рассылки уведомлений "
     )
 
     def __str__(self):
