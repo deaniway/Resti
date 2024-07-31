@@ -2,7 +2,7 @@
 name = "resti"
 version = "0.1.0"
 description = "Simplified CRM on Django"
-authors = ["Denis <ad.way@mail.ru>"]
+authors = ["Denis <ad.way@mail.ru>", "Daniil <https://github.com/SourTyJohn>"]
 readme = "README.md"
 packages = [{include = "_project_"}]
 

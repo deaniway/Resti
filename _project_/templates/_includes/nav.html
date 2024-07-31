@@ -1,0 +1,32 @@
+{% load django_bootstrap5 %}
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'index' %}">Resti 🎲 CRM</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+
+                {% if not user.is_authenticated %}
+                <li class="nav-item ms-2">
+                    <a class="btn btn-outline-success" href="{% url 'user_register' %}">Зарегистрироваться</a>
+                </li>
+                {% endif %}
+
+                {% if user.is_authenticated %}
+                <li class="nav-item ms-2">
+                    <form method="post" action="{% url 'user_logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Выйти</button>
+                    </form>
+                </li>
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+</nav>
