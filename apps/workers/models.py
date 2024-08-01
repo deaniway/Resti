@@ -1,6 +1,7 @@
 from django.core.validators import RegexValidator
 from django.db import models
 from apps.professions.models import Profession
+from django.utils.translation import gettext as _
 
 
 class Worker(models.Model):
@@ -12,12 +13,11 @@ class Worker(models.Model):
         null=True,
         blank=True
     )
-    bonus_salary = models.CharField(
-        max_length=10,
+    bonus_salary = models.IntegerField(
         blank=True,
         null=True,
         default=0,
-        help_text="Премиальные, надбавка"
+        help_text=_("Премиальные, надбавка")
     )
     phone_number = models.CharField(
         max_length=20,
@@ -26,14 +26,14 @@ class Worker(models.Model):
         validators=[
             RegexValidator(
                 regex=r'^\+7\(\d{3}\)\d{3}-\d{2}-\d{2}$',
-                message="Телефонный номер должен быть в формате '+7(XXX)XXX-XX-XX', где X - цифра."
+                message=_("Телефонный номер должен быть в формате '+7(XXX)XXX-XX-XX', где X - цифра.")
             )
         ]
     )
     telegram_link = models.URLField(
         blank=True,
         null=True,
-        help_text="Введите телеграмм сотрудника для рассылки уведомлений "
+        help_text=_("Введите телеграмм сотрудника для рассылки уведомлений")
     )
 
     def __str__(self):
