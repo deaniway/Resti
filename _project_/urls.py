@@ -10,6 +10,9 @@ urlpatterns = [
     # worker
     path('worker/', include('apps.workers.urls')),
 
+    # business
+    path('business/', include('apps.businesses.urls')),
+
     # app
     path('login/', UserLoginView.as_view(), name='user_login'),
     path('logout/', UserLogoutView.as_view(), name='user_logout'),
