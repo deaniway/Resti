@@ -23,7 +23,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Мой персонал</a>
+                    <a class="nav-link active" aria-current="page" href="{% url 'worker_list' %}">Мой персонал</a>
                 </li>
 
                 <li class="nav-item">
@@ -47,7 +47,7 @@
                 <li class="nav-item ms-2">
                     <form method="post" action="{% url 'user_logout' %}">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">Выйти</button>
+                        <button type="submit" class="btn btn-danger float-end">Выйти</button>
                     </form>
                 </li>
                 {% endif %}

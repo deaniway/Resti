@@ -8,10 +8,10 @@ dev:
 	python3 manage.py runserver
 
 makemigrations:
-	poetry run ./manage.py makemigrations
+	 python3 manage.py makemigrations
 
 migrate:
-	poetry run ./manage.py migrate
+	python3 manage.py migrate
 
 dev-db:
 	docker-compose up -d

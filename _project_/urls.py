@@ -3,10 +3,12 @@ from django.urls import path, include
 from rest_framework.authtoken.views import obtain_auth_token
 from .views import IndexTemplateView, UserLoginView, UserLogoutView
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', IndexTemplateView.as_view(), name='index'),
+
+    # worker
+    path('worker/', include('apps.workers.urls')),
 
     # app
     path('login/', UserLoginView.as_view(), name='user_login'),

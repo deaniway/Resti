@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'core',
     'apps.users',
     'apps.businesses',
+    'apps.workers',
+    'apps.professions',
     'apps.api.v1',
 ]
 

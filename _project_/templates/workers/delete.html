@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends '_forms/delete_form.html' %}
 
-</body>
-</html>
+
+{% block header %}Удаление пользователя{% endblock %}
+
+{% block object_name %}{{ object.name }}{% endblock %}
