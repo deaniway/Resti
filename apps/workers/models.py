@@ -1,6 +1,7 @@
 from django.core.validators import RegexValidator
 from django.db import models
 from apps.professions.models import Profession
+from apps.businesses.models import Business
 
 
 class Worker(models.Model):
@@ -31,6 +32,14 @@ class Worker(models.Model):
         blank=True,
         null=True,
         help_text="Введите телеграмм сотрудника для рассылки уведомлений "
+    )
+    business = models.ForeignKey(
+        Business,
+        on_delete=models.CASCADE,
+        related_name='workers',
+        null=True,
+        blank=True,
+        help_text="Выберите бизнес, к которому относится этот сотрудник."
     )
 
     def __str__(self):

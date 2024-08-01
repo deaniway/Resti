@@ -2,11 +2,12 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h2 class="mb-4">Все сотрудники</h2>
+    <h2 class="mb-4">Список сотрудников</h2>
 
     <a href="{% url 'worker_create' %}" class="btn btn-primary mb-4">Добавить сотрудника</a>
 
-    <a href="{% url 'my_worker_list' %}" class="btn btn-primary mb-4">Мои сотрудники</a>
+    {% for business, workers in workers_by_business.items %}
+    <h3 class="mt-4">{{ business.name }}</h3>
 
     <table class="table table-striped table-bordered text-center">
         <thead class="table-light">
@@ -35,17 +36,20 @@
                 —
                 {% endif %}
             </td>
-
             <td>
                 <div class="d-flex justify-content-center align-items-center">
                     <a href="{% url 'worker_update' worker.id %}" class="btn btn-outline-primary btn-sm me-2">Редактировать</a>
-                    <a  href= "{% url 'worker_delete' worker.id  %}" type="submit" class="btn btn-outline-danger btn-sm">Удалить</a>
+                    <a href="{% url 'worker_delete' worker.id %}" class="btn btn-outline-danger btn-sm">Удалить</a>
                 </div>
             </td>
-
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="7">Нет сотрудников для отображения.</td>
         </tr>
         {% endfor %}
         </tbody>
     </table>
+    {% endfor %}
 </div>
 {% endblock %}
