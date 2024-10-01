@@ -1,7 +1,6 @@
-from django.core.validators import RegexValidator
 from django.db import models
-from apps.professions.models import Profession
-from apps.businesses.models import Business
+from src.apps.businesses.models import Business
+from src.apps.professions.models import Profession
 
 
 class Worker(models.Model):
@@ -14,7 +13,6 @@ class Worker(models.Model):
         blank=True
     )
     bonus_salary = models.IntegerField(
-        max_length=10,
         blank=True,
         null=True,
         default=0,

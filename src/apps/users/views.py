@@ -3,7 +3,7 @@ from django.utils.translation import gettext as _
 from django.views.generic import FormView
 from django.urls import reverse_lazy
 from .forms import UserRegisterForm
-from core.mixins.FormViews import SaveValidFormMixin, RenderErrorsMixin
+from src.core.mixins.FormViews import SaveValidFormMixin, RenderErrorsMixin
 
 
 class UserCreateView(SuccessMessageMixin, RenderErrorsMixin, SaveValidFormMixin, FormView):

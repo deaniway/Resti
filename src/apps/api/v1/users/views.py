@@ -1,5 +1,5 @@
 from rest_framework.permissions import AllowAny, IsAuthenticated
-from apps.api.v1.permissions import IsSuperuser
+from src.apps.api.v1.permissions import IsSuperuser
 
 from rest_framework import generics
 from rest_framework.response import Response

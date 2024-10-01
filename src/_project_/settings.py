@@ -11,11 +11,9 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -46,13 +44,13 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     
     # Local Apps
-    '_project_',
-    'core',
-    'apps.users',
-    'apps.businesses',
-    'apps.workers',
-    'apps.professions',
-    'apps.api.v1',
+    'src._project_',
+    'src.core',
+    'src.apps.users',
+    'src.apps.businesses',
+    'src.apps.professions',
+    'src.apps.workers',
+    'src.apps.api.v1',
 ]
 
 MIDDLEWARE = [
@@ -66,7 +64,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = '_project_.urls'
+ROOT_URLCONF = 'src._project_.urls'
 
 TEMPLATES = [
     {
@@ -84,7 +82,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = '_project_.wsgi.application'
+WSGI_APPLICATION = 'src._project_.wsgi.application'
 
 
 # Database
@@ -159,3 +157,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ]
 }
+
+# Deploy Settings
+DEPLOY_ADDRESS = '127.0.0.1'
+DEPLOY_PORT = '8000'

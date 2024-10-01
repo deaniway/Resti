@@ -1,7 +1,7 @@
 from django.views.generic import CreateView, ListView, DeleteView, UpdateView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-from apps.businesses.models import Business
+from src.apps.businesses.models import Business
 from .models import Worker
 from .forms import WorkerCreationForm
 

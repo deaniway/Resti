@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class WorkersConfig(AppConfig):
+class ProfessionConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apps.workers'
+    name = 'src.apps.professions'

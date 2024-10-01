@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ProfessionConfig(AppConfig):
+class BusinessConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'apps.professions'
+    name = 'src.apps.businesses'
