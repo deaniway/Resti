@@ -1,6 +1,4 @@
 {% extends '_forms/delete_form.html' %}
-
-
 {% block header %}Удаление пользователя{% endblock %}
-
 {% block object_name %}{{ object.name }}{% endblock %}
+{% block cancel_href %}{% url 'worker_list' %}{% endblock %}

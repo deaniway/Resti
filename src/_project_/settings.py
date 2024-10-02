@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-whhg9425ohp0beuz)4-7@40j8e$on9oy9+bw+9co4&t59f3%k%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['resti-crm.ru', 'www.resti-crm.ru', '127.0.0.1']
 
 
 # Application definition
@@ -160,4 +160,4 @@ REST_FRAMEWORK = {
 
 # Deploy Settings
 DEPLOY_ADDRESS = '127.0.0.1'
-DEPLOY_PORT = '8000'
+DEPLOY_PORT = '5000'

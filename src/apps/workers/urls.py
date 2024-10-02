@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import WorkerCreationView, MyWorkerListView ,WorkerListView, WorkerDeleteView, WorkerUpdateView
+from .views import WorkerCreationView, MyWorkerListView, WorkerListView, WorkerDeleteView, WorkerUpdateView
 
 urlpatterns = [
     path('', WorkerListView.as_view(), name='worker_list'),

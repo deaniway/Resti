@@ -5,12 +5,13 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            {%block header%} <h2>Регистрация</h2> {%endblock%}
+            <h2>{% block header %}{% endblock %}</h2>
             <form method="post" class="p-3 shadow rounded small">
                 {% csrf_token %}
                 {% bootstrap_form form %}
-
-                <button class="btn btn-primary w-100 mt-3" type="submit">Зарегистрироваться</button>
+                <button class="btn btn-primary w-100 mt-3" type="submit">
+                    {% block submit_label %} {% endblock %}
+                </button>
             </form>
         </div>
     </div>

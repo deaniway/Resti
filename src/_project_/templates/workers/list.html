@@ -11,8 +11,7 @@
     <table class="table table-striped table-bordered text-center">
         <thead class="table-light">
         <tr>
-            <th>Имя</th>
-            <th>Фамилия</th>
+            <th>ФИО</th>
             <th>Профессия</th>
             <th>Премиальные (Рубли)</th>
             <th>Номер Телефона</th>
@@ -23,8 +22,7 @@
         <tbody>
         {% for worker in workers %}
         <tr>
-            <td>{{ worker.first_name }}</td>
-            <td>{{ worker.last_name }}</td>
+            <td>{{ worker.name }}</td>
             <td>{{ worker.profession }}</td>
             <td>{{ worker.bonus_salary }}</td>
             <td>{{ worker.phone_number }}</td>

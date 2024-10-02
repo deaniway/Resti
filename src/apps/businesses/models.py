@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.utils.translation import gettext_lazy as _
 
 
 class Business(models.Model):
@@ -7,8 +8,11 @@ class Business(models.Model):
     description = models.TextField(
         max_length=100,
         null=True,
-        help_text="В случае нескольких предприятий одного бренда"
+        help_text=_("В случае нескольких предприятий одного бренда")
     )
+
+    def __str__(self):
+        return self.name
 
 
 class BusinessToUser(models.Model):
