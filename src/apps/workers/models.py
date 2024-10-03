@@ -40,6 +40,7 @@ class Worker(models.Model):
         blank=True,
         help_text=_("Выберите бизнес, к которому относится этот сотрудник.")
     )
+    date_of_birth = models.DateField()
 
     def __str__(self):
         return f"{self.name}"

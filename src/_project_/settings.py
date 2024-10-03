@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from os import getenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,12 +20,19 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-whhg9425ohp0beuz)4-7@40j8e$on9oy9+bw+9co4&t59f3%k%'
+SECRET_KEY = getenv(
+    'SECRET_KEY',
+    'django-insecure-whhg9425ohp0beuz)4-7@40j8e$on9oy9+bw+9co4&t59f3%k%'
+)
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = ['resti-crm.ru', 'www.resti-crm.ru', '127.0.0.1']
+DEBUG = getenv('DEBUG', 'True') == 'True'
+
+ALLOWED_HOSTS = getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1,webserver').split(',')
+CSRF_TRUSTED_ORIGINS = getenv('CSRF_TRUSTED_ORIGINS', 'http://localhost,http://127.0.0.1').split(',')
+
+DEPLOY_ADDRESS = '127.0.0.1'
+DEPLOY_PORT = int( getenv('DEPLOY_PORT', '5000') )
 
 
 # Application definition
@@ -157,7 +165,3 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ]
 }
-
-# Deploy Settings
-DEPLOY_ADDRESS = '127.0.0.1'
-DEPLOY_PORT = '5000'

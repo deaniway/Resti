@@ -3,9 +3,10 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Worker
 from .forms import WorkerCreationForm
+from src.core.mixins.FormViews import PassUserToFormKwargsMixin
 
 
-class WorkerCreationView(LoginRequiredMixin, CreateView):
+class WorkerCreationView(LoginRequiredMixin, PassUserToFormKwargsMixin, CreateView):
     model = Worker
     form_class = WorkerCreationForm
     template_name = 'workers/create.html'
@@ -19,7 +20,7 @@ class WorkerListView(LoginRequiredMixin, ListView):
     ordering = ['-profession']
 
 
-class WorkerUpdateView(LoginRequiredMixin, UpdateView):
+class WorkerUpdateView(LoginRequiredMixin, PassUserToFormKwargsMixin, UpdateView):
     model = Worker
     form_class = WorkerCreationForm
     template_name = 'workers/update.html'

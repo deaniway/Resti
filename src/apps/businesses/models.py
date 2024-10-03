@@ -11,6 +11,16 @@ class Business(models.Model):
         help_text=_("В случае нескольких предприятий одного бренда")
     )
 
+    @classmethod
+    def list_for_user(cls, user):
+        links = BusinessToUser.objects.filter(user=user)
+        return [[ln.business, ln.permissions] for ln in links]
+
+    def link_to_user(self, user):
+        _link = BusinessToUser(user=user, business=self, permissions=BusinessToUser.OWNER)
+        _link.save()
+        return _link
+
     def __str__(self):
         return self.name
 

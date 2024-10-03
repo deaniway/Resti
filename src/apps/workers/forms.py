@@ -2,6 +2,7 @@ from django import forms
 from .models import Worker
 from ..businesses.models import Business
 from django.utils.translation import gettext_lazy as _
+from django.db.models import Q
 
 
 class WorkerCreationForm(forms.ModelForm):
@@ -9,6 +10,7 @@ class WorkerCreationForm(forms.ModelForm):
         model = Worker
         fields = [
             'name',
+            'date_of_birth',
             'business',
             'profession',
             'bonus_salary',
@@ -17,6 +19,7 @@ class WorkerCreationForm(forms.ModelForm):
         ]
         labels = {
             'name': _("ФИО"),
+            'date_of_birth': _("Дата рождения"),
             'business': _("Заведение"),
             'profession': _('Профессия'),
             'bonus_salary': _("Премия"),
@@ -28,5 +31,5 @@ class WorkerCreationForm(forms.ModelForm):
         user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
 
-        if user:
-            self.fields['business'].queryset = Business.objects.filter(businesstouser__user=user)
+        self.fields['business'].queryset = Business.objects.\
+            filter( Q(businesstouser__user=user) & ~Q(businesstouser__permissions='readonly') )

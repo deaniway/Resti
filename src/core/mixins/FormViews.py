@@ -1,24 +1,22 @@
 from django import forms
-from django.contrib import messages
 from .__base_mixin__ import AbstractMixin
-from django.views.generic import FormView
+from django.views.generic import FormView, CreateView, UpdateView
 
 
 class SaveValidFormMixin(AbstractMixin):
     """mixin for FormView.
     Auto save form data to data base if form is valid"""
-    __mixin_required_parents__ = (FormView, )
+    __mixin_required_parents__ = (FormView, CreateView, UpdateView, )
 
     def form_valid(self, form: forms.ModelForm):
         form.save()
         return super(SaveValidFormMixin, self).form_valid(form)
 
 
-class RenderErrorsMixin(AbstractMixin):
-    """mixin for FormView.
-    Flashes error messages if form data is not valid"""
-    __mixin_required_parents__ = (FormView, )
+class PassUserToFormKwargsMixin(AbstractMixin):
+    __mixin_required_parents__ = (FormView, CreateView, UpdateView)
 
-    def form_invalid(self, form: forms.ModelForm):
-        messages.error(self.request, form.errors)
-        return super(RenderErrorsMixin, self).form_invalid(form)
+    def get_form(self, form_class=None):
+        if form_class is None:
+            form_class = self.get_form_class()
+        return form_class(user=self.request.user, **self.get_form_kwargs())
