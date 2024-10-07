@@ -2,7 +2,6 @@ from django import forms
 from .models import Worker
 from ..businesses.models import Business
 from django.utils.translation import gettext_lazy as _
-from django.db.models import Q
 
 
 class WorkerCreationForm(forms.ModelForm):
@@ -26,10 +25,11 @@ class WorkerCreationForm(forms.ModelForm):
             'phone_number': _("Номер телефона"),
             'telegram_link': _("Профиль телеграм")
         }
+        widgets = {
+            'date_of_birth': forms.TextInput( attrs={"type": "date", } )
+        }
 
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
-
-        self.fields['business'].queryset = Business.objects.\
-            filter( Q(businesstouser__user=user) & ~Q(businesstouser__permissions='readonly') )
+        self.fields['business'].queryset = Business.can_edit(user)

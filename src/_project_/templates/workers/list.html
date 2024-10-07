@@ -2,46 +2,51 @@
 
 {% block content %}
 <div class="container mt-5">
-    <h2 class="mb-4">Все сотрудники</h2>
+    <h2 class="mb-4">Сотрудники</h2>
 
     <a href="{% url 'worker_create' %}" class="btn btn-primary mb-4">Добавить сотрудника</a>
+    <a href="{% url 'worker_create' %}" class="btn btn-secondary mb-4">Дни рождения{{nearest_birthday}}</a>
 
-    <a href="{% url 'my_worker_list' %}" class="btn btn-primary mb-4">Мои сотрудники</a>
-
+    <h5 class="mb-3">Сортировать по бизнесу:</h5>
+    <a href="{% url 'worker_list' %}" class="btn btn-info mb-4">Все бизнесы</a>
+    {% for business in businesses %}
+        <a href="{% url 'worker_list_filtered' business.pk %}" class="btn btn-info mb-4">{{business.name}}</a>
+    {% endfor %}
     <table class="table table-striped table-bordered text-center">
         <thead class="table-light">
         <tr>
             <th>ФИО</th>
             <th>Профессия</th>
-            <th>Премиальные (Рубли)</th>
             <th>Номер Телефона</th>
             <th>Telegram</th>
+            <th>День рождения</th>
+            <th>Премия</th>
             <th>Действия</th>
         </tr>
         </thead>
         <tbody>
         {% for worker in workers %}
-        <tr>
-            <td>{{ worker.name }}</td>
-            <td>{{ worker.profession }}</td>
-            <td>{{ worker.bonus_salary }}</td>
-            <td>{{ worker.phone_number }}</td>
-            <td>
-                {% if worker.telegram_link %}
-                <a href="{{ worker.telegram_link }}" target="_blank">{{ worker.telegram_link }}</a>
-                {% else %}
-                —
-                {% endif %}
-            </td>
+            <tr>
+                <td>{{ worker.name }}</td>
+                <td>{{ worker.profession }}</td>
+                <td>{{ worker.phone_number }}</td>
+                <td>
+                    {% if worker.telegram_link %}
+                    <a href="{{ worker.telegram_link }}" target="_blank">{{ worker.telegram_link }}</a>
+                    {% else %}
+                    —
+                    {% endif %}
+                </td>
+                <td>{{ worker.date_of_birth }}</td>
+                <td>{{ worker.bonus_salary }}</td>
+                <td>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <a href="{% url 'worker_update' worker.id %}" class="btn btn-outline-primary btn-sm me-2">Редактировать</a>
+                        <a  href= "{% url 'worker_delete' worker.id  %}" type="submit" class="btn btn-outline-danger btn-sm">Удалить</a>
+                    </div>
+                </td>
 
-            <td>
-                <div class="d-flex justify-content-center align-items-center">
-                    <a href="{% url 'worker_update' worker.id %}" class="btn btn-outline-primary btn-sm me-2">Редактировать</a>
-                    <a  href= "{% url 'worker_delete' worker.id  %}" type="submit" class="btn btn-outline-danger btn-sm">Удалить</a>
-                </div>
-            </td>
-
-        </tr>
+            </tr>
         {% endfor %}
         </tbody>
     </table>

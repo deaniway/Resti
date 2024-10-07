@@ -16,7 +16,7 @@ class SaveValidFormMixin(AbstractMixin):
 class PassUserToFormKwargsMixin(AbstractMixin):
     __mixin_required_parents__ = (FormView, CreateView, UpdateView)
 
-    def get_form(self, form_class=None):
-        if form_class is None:
-            form_class = self.get_form_class()
-        return form_class(user=self.request.user, **self.get_form_kwargs())
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs.update( {'user': self.request.user} )
+        return kwargs
