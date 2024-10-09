@@ -1,0 +1,38 @@
+<table class="table table-striped table-bordered text-center">
+    <thead class="table-light">
+    <tr>
+        <th>ФИО</th>
+        <th>Профессия</th>
+        <th>Номер Телефона</th>
+        <th>Telegram</th>
+        <th>День рождения</th>
+        <th>Премия</th>
+        <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for worker in workers %}
+        <tr>
+            <td>{{ worker.name }}</td>
+            <td>{{ worker.profession }}</td>
+            <td>{{ worker.phone_number }}</td>
+            <td>
+                {% if worker.telegram_link %}
+                <a href="{{ worker.telegram_link }}" target="_blank">{{ worker.telegram_link }}</a>
+                {% else %}
+                —
+                {% endif %}
+            </td>
+            <td>{{ worker.date_of_birth }}</td>
+            <td>{{ worker.bonus_salary }}</td>
+            <td>
+                <div class="d-flex justify-content-center align-items-center">
+                    <a href="{% url 'worker_update' worker.id %}" class="btn btn-outline-primary btn-sm me-2">Редактировать</a>
+                    <a  href= "{% url 'worker_delete' worker.id  %}" type="submit" class="btn btn-outline-danger btn-sm">Удалить</a>
+                </div>
+            </td>
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

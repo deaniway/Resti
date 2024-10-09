@@ -42,9 +42,5 @@ class Worker(models.Model):
     )
     date_of_birth = models.DateField()
 
-    @classmethod
-    def nearest_birthday(cls):
-        pass
-
     def __str__(self):
         return f"{self.name}"

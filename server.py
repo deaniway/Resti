@@ -8,12 +8,12 @@ if __name__ == '__main__':
     from waitress import serve
     import logging
 
+    print(f'Deploying at: http://{DEPLOY_ADDRESS}:{DEPLOY_PORT}')
     logging.basicConfig(
         filename='debug.log',
         encoding='utf-8',
         level=logging.DEBUG
     )
-
     serve(
         app=application,
         host=DEPLOY_ADDRESS,
