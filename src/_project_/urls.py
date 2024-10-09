@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from rest_framework.authtoken.views import obtain_auth_token
+# from rest_framework.authtoken.views import obtain_auth_token
 from .views import IndexTemplateView, UserLoginView, UserLogoutView
 
 urlpatterns = [
@@ -16,9 +16,9 @@ urlpatterns = [
     path('business/', include('apps.businesses.urls')),
 
     # worker
-    path('worker/', include('apps.workers.urls')),
+    path('worker/', include('apps.workers.urls'))
 
     # API
-    path('api/token/', obtain_auth_token, name='token_obtain'),
-    path('api/v1/', include('apps.api.v1.urls')),
+#     path('api/token/', obtain_auth_token, name='token_obtain'),
+#     path('api/v1/', include('apps.api.v1.urls')),
 ]
