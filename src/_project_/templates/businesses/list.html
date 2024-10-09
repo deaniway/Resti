@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Список бизнесов</h2>
+    <a href="{% url 'add_business' %}" class="btn btn-primary mb-4">Добавить бизнес</a>
+    <div class="row">
+        {% for business in businesses %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ business.0.name }}</h5>
+                    <p class="card-text">{{ business.1 }}</p>
+                    <p class="card-text">{{ business.0.description }}</p>
+                    <a href="#" class="btn btn-outline-primary">Подробнее</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>Нет бизнесов для отображения.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

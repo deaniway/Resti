@@ -34,3 +34,11 @@ Simplified CRM on Django for small businesses in the catering industry
 - test coverage
 - flake8
 - poetry
+
+
+## Настройки среды
+```dotenv
+DEBUG=False
+ALLOWED_HOSTS=resti-crm.ru,www.resti-crm.ru
+CSRF_TRUSTED_ORIGINS=https://resti-crm.ru,https://www.resti-crm.ru
+```

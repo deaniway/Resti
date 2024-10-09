@@ -1,0 +1,4 @@
+{% extends '_forms/delete_form.html' %}
+{% block header %}Удаление бизнеса{% endblock %}
+{% block object_name %}{{ object.name }}{% endblock %}
+{% block cancel_href %}{% url 'business_list' %}{% endblock %}

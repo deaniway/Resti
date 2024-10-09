@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="bg-body-tertiary p-5 rounded">
+    <h1>Resti 🎲</h1>
+    <p class="lead">Ваш лучший CRM</p>
+
+    {% if user.is_authenticated %}
+        <a class="btn btn-lg btn-primary" href="#" role="button">Приступить к задачам »</a>
+    {% else %}
+        <a class="btn btn-lg btn-primary" href="{% url 'user_login' %}" role="button">Войти в систему »</a>
+    {% endif %}
+
+</div>
+{% endblock %}
