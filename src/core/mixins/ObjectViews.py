@@ -1,6 +1,6 @@
 from .__base_mixin__ import AbstractMixin
 from django.views.generic import ListView, UpdateView, DeleteView
-from src.apps.businesses.models import Business
+from apps.businesses.models import Business
 
 
 class CheckPermissionsThroughBusinessMixin(AbstractMixin):

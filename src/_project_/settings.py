@@ -61,17 +61,17 @@ INSTALLED_APPS = [
     'django_bootstrap5',
 
     # Third-Party Apps
-    'rest_framework',
-    'rest_framework.authtoken',
+    # 'rest_framework',
+    # 'rest_framework.authtoken',
     
     # Local Apps
-    'src._project_',
-    'src.core',
-    'src.apps.users',
-    'src.apps.businesses',
-    'src.apps.professions',
-    'src.apps.workers',
-    'src.apps.api.v1',
+    '_project_',
+    'core',
+    'apps.users',
+    'apps.businesses',
+    'apps.professions',
+    'apps.workers',
+    # 'apps.api.v1',
 ]
 
 MIDDLEWARE = [
@@ -85,7 +85,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'src._project_.urls'
+ROOT_URLCONF = '_project_.urls'
 
 TEMPLATES = [
     {
@@ -103,7 +103,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'src._project_.wsgi.application'
+WSGI_APPLICATION = '_project_.wsgi.application'
 
 
 # Database

@@ -1,11 +1,13 @@
 from django.views.generic import CreateView, ListView, DeleteView, UpdateView, TemplateView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+
 from .models import Worker
 from .forms import WorkerCreationForm
-from src.core.mixins.FormViews import PassUserToFormKwargsMixin
-from src.apps.businesses.models import Business
-from src.core.mixins.ObjectViews import CheckPermissionsThroughBusinessMixin
+
+from core.mixins.FormViews import PassUserToFormKwargsMixin
+from core.mixins.ObjectViews import CheckPermissionsThroughBusinessMixin
+from ..businesses.models import Business
 
 
 class WorkerCreationView(LoginRequiredMixin, PassUserToFormKwargsMixin, CreateView):

@@ -27,6 +27,3 @@ function refresh_workers(_business_id=0, _sorting=0, button_id=0) {
     });
 }
 $(document).ready( refresh_workers() );
-$("a.rb").click( function(event) {
-    alert(event);
-})
