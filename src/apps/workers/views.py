@@ -57,14 +57,19 @@ class WorkerListViewData(LoginRequiredMixin, CheckPermissionsThroughBusinessMixi
         return super(WorkerListViewData, self).get_ordering()
 
 
-class WorkerUpdateView(LoginRequiredMixin, CheckPermissionsThroughBusinessMixin, PassUserToFormKwargsMixin, UpdateView):
-    model = Worker
-    form_class = WorkerCreationForm
+class WorkerActionView(LoginRequiredMixin, CheckPermissionsThroughBusinessMixin, PassUserToFormKwargsMixin, UpdateView):
+    http_method_names = ['get', ]
     template_name = 'workers/update_delete.html'
-    success_url = reverse_lazy('worker_list')
+    form_class = WorkerCreationForm
+    model = Worker
+
+
+class WorkerUpdateView(LoginRequiredMixin, CheckPermissionsThroughBusinessMixin, PassUserToFormKwargsMixin, UpdateView):
+    http_method_names = ['post', ]
+    form_class = WorkerCreationForm
+    model = Worker
 
 
 class WorkerDeleteView(LoginRequiredMixin, CheckPermissionsThroughBusinessMixin, DeleteView):
+    http_method_names = ['post', ]
     model = Worker
-    template_name = 'workers/delete.html'
-    success_url = reverse_lazy('worker_list')

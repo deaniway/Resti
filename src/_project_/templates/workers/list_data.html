@@ -26,7 +26,7 @@
             <td class="th-res-mid">{{ worker.date_of_birth }}</td>
             <td class="th-res-mid">{{ worker.bonus_salary }}</td>
             <td class="table-cell-no-padding">
-                <a onclick='show_list_action_modal_form( "{% url "worker_update" worker.id %}" )'
+                <a onclick='show_list_action_modal_form( "{% url "worker_action" worker.id %}" )'
                    class="btn btn-secondary btn-table">...</a>
             </td>
         </tr>

@@ -12,7 +12,7 @@
 <div class="container mt-5">
     <h2 class="mb-4">Сотрудники</h2>
 
-    <a href="{% url 'worker_create' %}" class="btn btn-primary mb-4">Добавить сотрудника</a>
+    <a onclick='show_reqular_modal_form( "{% url "worker_create" %}" )' class="btn btn-primary mb-4">Добавить сотрудника</a>
     <a onclick="toggle_filters_display()" class="btn btn-secondary mb-4">Фильтры</a>
 
     <div id="filters" style="display: none">
