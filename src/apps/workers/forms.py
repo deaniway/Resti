@@ -1,7 +1,8 @@
 from django import forms
+from django.utils.translation import gettext_lazy as _
+
 from .models import Worker
 from ..businesses.models import Business
-from django.utils.translation import gettext_lazy as _
 
 
 class WorkerCreationForm(forms.ModelForm):

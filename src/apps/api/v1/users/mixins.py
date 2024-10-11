@@ -1,5 +1,5 @@
 from rest_framework.generics import get_object_or_404
-from src.core.utils import get_queryset
+from core.utils import get_queryset
 from . import serializers
 
 

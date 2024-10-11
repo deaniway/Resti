@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 {% load django_bootstrap5 %}
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>{% block title %}RestiCRM{% endblock %}</title>
+
     {% bootstrap_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css'%}">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/ajax_list_request.js' %}" async></script>
+    <script type="text/javascript" src="{% static 'js/worker_list.js' %}"       async></script>
+    <script type="text/javascript" src="{% static 'js/modal_form.js' %}"        async></script>
 </head>
 <body>
 
 {% include '_includes/nav.html' %}
 
 <div class="container-fluid mt-4 pt-4">
+    <div id="modal-form-wrapper"></div>
 
     {% if messages %}
         <div>

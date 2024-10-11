@@ -1,7 +1,8 @@
 from django.db import models
-from src.apps.businesses.models import Business
-from src.apps.professions.models import Profession
 from django.utils.translation import gettext_lazy as _
+
+from ..businesses.models import Business
+from ..professions.models import Profession
 
 
 class Worker(models.Model):

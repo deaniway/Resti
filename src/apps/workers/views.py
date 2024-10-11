@@ -1,11 +1,13 @@
 from django.views.generic import CreateView, ListView, DeleteView, UpdateView, TemplateView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+
 from .models import Worker
 from .forms import WorkerCreationForm
-from src.core.mixins.FormViews import PassUserToFormKwargsMixin
-from src.apps.businesses.models import Business
-from src.core.mixins.ObjectViews import CheckPermissionsThroughBusinessMixin
+
+from core.mixins.FormViews import PassUserToFormKwargsMixin
+from core.mixins.ObjectViews import CheckPermissionsThroughBusinessMixin
+from ..businesses.models import Business
 
 
 class WorkerCreationView(LoginRequiredMixin, PassUserToFormKwargsMixin, CreateView):
@@ -55,14 +57,19 @@ class WorkerListViewData(LoginRequiredMixin, CheckPermissionsThroughBusinessMixi
         return super(WorkerListViewData, self).get_ordering()
 
 
-class WorkerUpdateView(LoginRequiredMixin, CheckPermissionsThroughBusinessMixin, PassUserToFormKwargsMixin, UpdateView):
-    model = Worker
+class WorkerActionView(LoginRequiredMixin, CheckPermissionsThroughBusinessMixin, PassUserToFormKwargsMixin, UpdateView):
+    http_method_names = ['get', ]
+    template_name = 'workers/update_delete.html'
     form_class = WorkerCreationForm
-    template_name = 'workers/update.html'
-    success_url = reverse_lazy('worker_list')
+    model = Worker
+
+
+class WorkerUpdateView(LoginRequiredMixin, CheckPermissionsThroughBusinessMixin, PassUserToFormKwargsMixin, UpdateView):
+    http_method_names = ['post', ]
+    form_class = WorkerCreationForm
+    model = Worker
 
 
 class WorkerDeleteView(LoginRequiredMixin, CheckPermissionsThroughBusinessMixin, DeleteView):
+    http_method_names = ['post', ]
     model = Worker
-    template_name = 'workers/delete.html'
-    success_url = reverse_lazy('worker_list')

@@ -1,0 +1,7 @@
+{% extends '_forms/modal_form_update_delete.html' %}
+{% block header %}{% endblock %}
+
+{% block url_update %}{% url 'worker_update' object.id %}{% endblock %}
+{% block url_delete %}{% url 'worker_delete' object.id %}{% endblock %}
+
+{% block submit_label %} Сохранить {% endblock %}
