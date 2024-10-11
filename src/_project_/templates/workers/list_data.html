@@ -3,11 +3,11 @@
     <tr>
         <th>ФИО</th>
         <th>Профессия</th>
-        <th>Номер Телефона</th>
+        <th class="th-res-mid">Номер Телефона</th>
         <th>Telegram</th>
-        <th>День рождения</th>
-        <th>Премия</th>
-        <th>Действия</th>
+        <th class="th-res-mid">День рождения</th>
+        <th class="th-res-mid">Премия</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -15,7 +15,7 @@
         <tr>
             <td>{{ worker.name }}</td>
             <td>{{ worker.profession }}</td>
-            <td>{{ worker.phone_number }}</td>
+            <td class="th-res-mid">{{ worker.phone_number }}</td>
             <td>
                 {% if worker.telegram_link %}
                 <a href="{{ worker.telegram_link }}" target="_blank">{{ worker.telegram_link }}</a>
@@ -23,15 +23,12 @@
                 —
                 {% endif %}
             </td>
-            <td>{{ worker.date_of_birth }}</td>
-            <td>{{ worker.bonus_salary }}</td>
-            <td>
-                <div class="d-flex justify-content-center align-items-center">
-                    <a href="{% url 'worker_update' worker.id %}" class="btn btn-outline-primary btn-sm me-2">Редактировать</a>
-                    <a  href= "{% url 'worker_delete' worker.id  %}" type="submit" class="btn btn-outline-danger btn-sm">Удалить</a>
-                </div>
+            <td class="th-res-mid">{{ worker.date_of_birth }}</td>
+            <td class="th-res-mid">{{ worker.bonus_salary }}</td>
+            <td class="table-cell-no-padding">
+                <a onclick='show_list_action_modal_form( "{% url "worker_update" worker.id %}" )'
+                   class="btn btn-secondary btn-table">...</a>
             </td>
-
         </tr>
     {% endfor %}
     </tbody>

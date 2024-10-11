@@ -174,6 +174,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Auth settings
 
 AUTH_USER_MODEL = 'users.User'
+LOGIN_URL = 'user_login'
 LOGIN_REDIRECT_URL = 'index'
 
 # DRF settings

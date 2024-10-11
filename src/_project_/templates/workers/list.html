@@ -5,14 +5,9 @@
 {% load static %}
 
 <script>
-    const worker_list_data_url = "{% url 'worker_list_data' %}";
-    const DEFAULT_business_id = 0;
-    const DEFAULT_sorting = '-profession';
-
-    var business_id = DEFAULT_business_id;
-    var sorting = DEFAULT_sorting;
+    const LIST_DATA_URL = "{% url 'worker_list_data' %}";
+    const FILTERS = {'business_id': 0, 'sorting': 'profession'};
 </script>
-<script type="text/javascript" src="{% static 'js/worker_list.js' %}"></script>
 
 <div class="container mt-5">
     <h2 class="mb-4">Сотрудники</h2>
@@ -22,17 +17,16 @@
 
     <div id="filters" style="display: none">
         <h5 class="mb-3">Бизнес:</h5>
-        <a onclick="refresh_workers(-1, 0)" class="rb btn btn-info mb-4">Все бизнесы</a>
+        <a onclick="refresh_data({'business_id': -1})" class="rb btn btn-info mb-4">Все бизнесы</a>
         {% for business in businesses %}
-            <a onclick="refresh_workers({{business.id}})" class="btn btn-info mb-4 rb rb-1">{{business.name}}</a>
+            <a onclick="refresh_data({'business_id': {{business.id}}})" class="btn btn-info mb-4 rb rb-1">{{business.name}}</a>
         {% endfor %}
 
         <h5 class="mb-3">Упорядочить по:</h5>
-        <a onclick="refresh_workers(0, 'date_of_birth')" class="btn btn-info mb-4">Дата рождения</a>
-        <a onclick="refresh_workers(0, 'profession')" class="btn btn-info mb-4">Профессия</a>
+        <a onclick="refresh_data({'sorting': 'date_of_birth'})" class="btn btn-info mb-4">Дата рождения</a>
+        <a onclick="refresh_data({'sorting': 'profession'})" class="btn btn-info mb-4">Профессия</a>
     </div>
 
-    <div id="workers-list"> </div>
-
+    <div id="data-list"> </div>
 </div>
 {% endblock %}

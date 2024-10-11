@@ -60,7 +60,7 @@ class WorkerListViewData(LoginRequiredMixin, CheckPermissionsThroughBusinessMixi
 class WorkerUpdateView(LoginRequiredMixin, CheckPermissionsThroughBusinessMixin, PassUserToFormKwargsMixin, UpdateView):
     model = Worker
     form_class = WorkerCreationForm
-    template_name = 'workers/update.html'
+    template_name = 'workers/update_delete.html'
     success_url = reverse_lazy('worker_list')
 
 
